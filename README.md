@@ -1,10 +1,12 @@
 # 🛰️ SatVerify: Deepfake Satellite Image Detection for Carbon Credit Markets
 
+[![Live Demo: GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-00E676?style=for-the-badge&logo=github&logoColor=white)](https://abishek0109.github.io/SatVerify/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Streamlit App](https://img.shields.io/badge/frontend-Streamlit%20v1.51-red.svg)](https://streamlit.io/)
 [![Test Suite: 100% Pass](https://img.shields.io/badge/tests-19%2F19%20passed-brightgreen.svg)](tests/)
 
+> 🌐 **Live Web Application:** [**https://abishek0109.github.io/SatVerify/**](https://abishek0109.github.io/SatVerify/)  
 > **SatVerify** is an end-to-end multi-branch satellite image forensics system engineered to verify the authenticity of satellite imagery in carbon offset projects, detecting "paper forests," synthetic vegetation inpainting, and digital terrain tampering.
 
 ---
@@ -194,20 +196,25 @@ pip install tensorflow
 ---
 
 ## 🛰️ Launching the Application
-
-Run the Streamlit application:
-
+ 
+### 1. Live Web Application (No Installation Required)
+Access the live forensic inspector directly in your browser on GitHub Pages:  
+👉 [**https://abishek0109.github.io/SatVerify/**](https://abishek0109.github.io/SatVerify/)
+ 
+### 2. Local Streamlit Desktop Application
+Run the full local Python application with cached model inference:
+ 
 ```bash
 streamlit run app.py
 ```
-
+ 
 The application will start locally at:
 ```text
 http://localhost:8501
 ```
-
+ 
 ### Quick Demo with Presets
-Inside the application, open the **"Quick Demo: Load Preset Fixture"** dropdown to immediately test authentic and tampered satellite samples without uploading external files!
+Inside both the web app and Streamlit interface, open the **"Quick Demo: Load Preset Fixture"** dropdown to immediately test authentic and tampered satellite samples without uploading external files!
 
 ---
 
