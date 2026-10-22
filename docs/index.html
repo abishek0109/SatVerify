@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SatVerify — Deepfake Satellite Image Detection for Carbon Credit Markets</title>
+  <meta name="description" content="AI forensics platform to verify authenticity of satellite imagery in carbon offset projects, detecting paper forests, generative inpainting, and digital terrain tampering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">🛰️</div>
+        <div>
+          <div class="brand-title">SatVerify</div>
+        </div>
+        <span class="brand-badge">v2.0.0</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#analyzer" class="nav-link">Analyzer</a>
+        <a href="#forensics" class="nav-link">Forensics</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="https://github.com/abishek0109/SatVerify" target="_blank" rel="noopener noreferrer" class="btn-github">
+          <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <span>🛡️</span>
+        <span>AI Forensics for Trusted Carbon Markets</span>
+      </div>
+      <h1 class="hero-title">
+        Detect <span class="hero-title-highlight">Deepfake Satellite Imagery</span> & Spliced Paper Forests
+      </h1>
+      <p class="hero-subtitle">
+        Independent multi-branch verification combining Error Level Analysis, Fourier frequency harmonics, 
+        micro-texture entropy, and structural gradient continuity to protect carbon offset credibility.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Analysis Section -->
+  <main class="container" id="analyzer">
+    <div class="grid-main">
+      
+      <!-- Left: Interactive Controls -->
+      <aside class="control-panel">
+        
+        <!-- Upload Dropzone -->
+        <div class="card">
+          <div class="section-label">
+            <span>📁</span>
+            <span>Upload Satellite Image</span>
+          </div>
+          <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon">🛰️</div>
+            <div class="dropzone-text">Click or Drag & Drop Image</div>
+            <div class="dropzone-hint">Supports JPEG, PNG, WebP (RGB/NIR)</div>
+            <input type="file" id="file-input" accept="image/*" style="display:none">
+          </div>
+        </div>
+
+        <!-- Quick Demo Presets -->
+        <div class="card">
+          <div class="section-label">
+            <span>🎯</span>
+            <span>Quick Demo Presets</span>
+          </div>
+          <div class="preset-list">
+            <button class="preset-btn active" data-src="assets/samples/fixture_real_000.jpg">
+              <span class="preset-icon">🌲</span>
+              <span>Authentic Canopy: Sample 01</span>
+            </button>
+            <button class="preset-btn" data-src="assets/samples/fixture_real_001.jpg">
+              <span class="preset-icon">🌲</span>
+              <span>Authentic Canopy: Sample 02</span>
+            </button>
+            <button class="preset-btn" data-src="assets/samples/fixture_fake_000.jpg">
+              <span class="preset-icon">🚨</span>
+              <span>Tampered: Spliced Canopy Patch</span>
+            </button>
+            <button class="preset-btn" data-src="assets/samples/fixture_fake_001.jpg">
+              <span class="preset-icon">🚨</span>
+              <span>Tampered: Boosted Green NDVI</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Decision Threshold Sliders -->
+        <div class="card">
+          <div class="section-label">
+            <span>⚙️</span>
+            <span>Calibrated Thresholds</span>
+          </div>
+          <div class="slider-group">
+            <div>
+              <div class="slider-row">
+                <span>REAL Threshold (Upper Bound)</span>
+                <span class="slider-value" id="val-real">0.38</span>
+              </div>
+              <input type="range" id="slider-real" min="0.20" max="0.50" step="0.01" value="0.38">
+            </div>
+            <div>
+              <div class="slider-row">
+                <span>FAKE Threshold (Lower Bound)</span>
+                <span class="slider-value" id="val-fake">0.62</span>
+              </div>
+              <input type="range" id="slider-fake" min="0.51" max="0.80" step="0.01" value="0.62">
+            </div>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px;">
+            Scores within [REAL, FAKE) produce an <strong>INCONCLUSIVE</strong> rating, requiring manual audit.
+          </p>
+        </div>
+
+        <!-- Action Export -->
+        <button class="btn-primary" id="btn-export">
+          <span>📄</span>
+          <span>Download Audit Certificate</span>
+        </button>
+
+      </aside>
+
+      <!-- Right: Analytical Evidence & Canvas Display -->
+      <section class="evidence-panel">
+        
+        <!-- Live Verdict Banner -->
+        <div class="verdict-banner verdict-real" id="verdict-banner">
+          <div>
+            <h2 class="verdict-title" id="verdict-title">
+              <span>✅</span> REAL — Authentic Terrain Candidate
+            </h2>
+            <div class="verdict-subtitle" id="verdict-subtitle">
+              Evaluating forensic signals across active branches...
+            </div>
+          </div>
+          <div class="verdict-badge" id="verdict-badge">
+            Calculating...
+          </div>
+        </div>
+
+        <!-- Visual Multi-Canvas Strip -->
+        <div class="canvas-grid">
+          
+          <!-- Input Preview -->
+          <div class="canvas-card">
+            <div class="canvas-header">
+              <div class="canvas-title">Input Satellite Scene</div>
+            </div>
+            <div class="canvas-wrapper">
+              <img id="img-preview" class="visual-preview" src="assets/samples/fixture_real_000.jpg" alt="Input Satellite Image">
+            </div>
+            <div class="canvas-desc">Full-resolution optical capture (Sentinel-2 / Landsat sensor contract).</div>
+          </div>
+
+          <!-- ELA Residuals -->
+          <div class="canvas-card">
+            <div class="canvas-header">
+              <div class="canvas-title">Error Level Analysis (ELA)</div>
+              <div class="canvas-score" id="score-ela">Score: 0.12</div>
+            </div>
+            <div class="canvas-wrapper">
+              <canvas id="canvas-ela"></canvas>
+            </div>
+            <div class="canvas-desc">Amplified JPEG recompression residuals highlight differential compression histories.</div>
+          </div>
+
+          <!-- FFT Frequency Spectrum -->
+          <div class="canvas-card">
+            <div class="canvas-header">
+              <div class="canvas-title">2D Fourier Spectrum (FFT)</div>
+              <div class="canvas-score" id="score-fft">Score: 0.18</div>
+            </div>
+            <div class="canvas-wrapper">
+              <canvas id="canvas-fft"></canvas>
+            </div>
+            <div class="canvas-desc">Measures high-frequency power roll-off and detects periodic convolutional grid spikes.</div>
+          </div>
+
+          <!-- LBP Micro-Texture -->
+          <div class="canvas-card">
+            <div class="canvas-header">
+              <div class="canvas-title">LBP Canopy Texture</div>
+              <div class="canvas-score" id="score-lbp">Score: 0.22</div>
+            </div>
+            <div class="canvas-wrapper">
+              <canvas id="canvas-lbp"></canvas>
+            </div>
+            <div class="canvas-desc">Regional Shannon entropy of micro-textures detects unnatural smoothing and cloned tiles.</div>
+          </div>
+
+          <!-- Structural Boundary Seams -->
+          <div class="canvas-card">
+            <div class="canvas-header">
+              <div class="canvas-title">Structural & Seam Gradients</div>
+              <div class="canvas-score" id="score-structure">Score: 0.19</div>
+            </div>
+            <div class="canvas-wrapper">
+              <canvas id="canvas-structure"></canvas>
+            </div>
+            <div class="canvas-desc">Sobel spatial gradients combined with Excess Green (ExG) boundary step analysis.</div>
+          </div>
+
+        </div>
+
+        <!-- Multi-Branch Fusion Attribution Table -->
+        <div class="card" id="forensics">
+          <div class="section-label">
+            <span>🔬</span>
+            <span>Multi-Branch Forensic Attribution Matrix</span>
+          </div>
+          <table class="branch-table">
+            <thead>
+              <tr>
+                <th>Forensic Branch</th>
+                <th>Status</th>
+                <th>Suspicion Score</th>
+                <th>Effective Weight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Branch B: Error Level Analysis (ELA)</strong></td>
+                <td><span class="badge-status badge-available">AVAILABLE</span></td>
+                <td id="tbl-ela-score">0.120</td>
+                <td>28%</td>
+              </tr>
+              <tr>
+                <td><strong>Branch C: Fourier Frequency Spectrum (FFT)</strong></td>
+                <td><span class="badge-status badge-available">AVAILABLE</span></td>
+                <td id="tbl-fft-score">0.180</td>
+                <td>28%</td>
+              </tr>
+              <tr>
+                <td><strong>Branch F: Structural Consistency & ExG Seams</strong></td>
+                <td><span class="badge-status badge-available">AVAILABLE</span></td>
+                <td id="tbl-structure-score">0.190</td>
+                <td>24%</td>
+              </tr>
+              <tr>
+                <td><strong>Branch E: Local Binary Patterns (LBP) Texture</strong></td>
+                <td><span class="badge-status badge-available">AVAILABLE</span></td>
+                <td id="tbl-texture-score">0.220</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <td><strong>Branch A/D: Deep Learning (ResNet50 / ViT)</strong></td>
+                <td><span class="badge-status badge-unavailable">STANDBY</span></td>
+                <td>Excluded (Uncalibrated)</td>
+                <td>0% (Re-normalized)</td>
+              </tr>
+              <tr style="background: rgba(0, 230, 118, 0.05); font-weight: bold;">
+                <td>Fused Overall Suspicion Score</td>
+                <td><span class="badge-status badge-available">ACTIVE</span></td>
+                <td id="tbl-fused-score">0.174</td>
+                <td>100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Technical Documentation Section -->
+  <section class="container" id="architecture" style="margin-bottom: 60px;">
+    <div class="card">
+      <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 16px; color: #FFFFFF;">
+        🏛️ System Architecture & Scientific Rigor
+      </h3>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">
+        SatVerify enforces the <strong>Model Honesty Principle</strong>: generic ImageNet neural networks without verified 
+        satellite-domain deepfake fine-tuning are never passed off as authentic detectors. The pipeline combines physics-based 
+        signal processing, differential compression residuals, and micro-texture entropy into an explainable tri-state decision.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+        <div style="background: #0E1622; padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <h4 style="color: var(--accent-lime); margin-bottom: 8px;">Error Level Analysis (ELA)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Recompresses images at JPEG quality 90 to evaluate residual divergence &Delta;(x,y) = |I - I_recomp| &times; 10. 
+            Homogeneous sensors degrade uniformly; spliced generative patches leave elevated residual variances.
+          </p>
+        </div>
+
+        <div style="background: #0E1622; padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">2D Fast Fourier Transform (FFT)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Transforms spatial pixels into the frequency domain. Natural terrain follows a 1/f&alpha; power roll-off. 
+            Generative AI upsamplers leave periodic checkerboard spikes and unnatural high-frequency energy floors.
+          </p>
+        </div>
+
+        <div style="background: #0E1622; padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Local Binary Patterns (LBP)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Extracts 8-neighbor circular micro-texture codes. Measures regional Shannon entropy to catch cloned canopy 
+            stamps or smooth synthetic inpainting across forest borders.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/abishek0109/SatVerify" target="_blank" class="nav-link">GitHub Repository</a>
+        <a href="#analyzer" class="nav-link">Live Analyzer</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+      </div>
+      <p>SatVerify — AI Satellite Image Authenticity Audit Engine for Carbon Markets.</p>
+      <p style="margin-top: 6px; font-size: 0.75rem; color: #475569;">
+        DISCLAIMER: Automated forensic screening tool. Results indicate absence or presence of digital manipulation signatures, 
+        not regulatory carbon certification. Corroborate with ground-truth plot telemetry.
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

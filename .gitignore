@@ -1,0 +1,43 @@
+# Python Bytecode and Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Large Datasets (preserve fixtures and placeholder)
+data/train/
+data/validation/
+data/val/
+data/test/
+data/synthetic_tampered/
+!data/.gitkeep
+!data/fixtures/
+
+# Model Checkpoints (preserve placeholder)
+checkpoints/*.pt
+checkpoints/*.h5
+checkpoints/*.keras
+checkpoints/*.bin
+!checkpoints/.gitkeep
+
+# Generated Reports (preserve placeholder)
+reports/*.pdf
+reports/*.json
+!reports/.gitkeep
+
+# Artifacts & Temp Files
+artifacts/*
+!artifacts/.gitkeep
+*.log
+.streamlit/
+satverify_uploads/
+_backup_surviving_files/
